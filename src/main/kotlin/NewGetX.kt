@@ -11,6 +11,7 @@ import helper.TemplateInfo
 import view.GetXListener
 import view.GetXTemplateView
 import java.io.*
+import java.nio.charset.StandardCharsets
 import java.util.*
 
 
@@ -157,8 +158,9 @@ class NewGetX : AnAction() {
             if (!file.exists()) {
                 file.createNewFile()
             }
-            val fw = FileWriter(file.absoluteFile)
-            val bw = BufferedWriter(fw)
+            val fos = FileOutputStream(file.absoluteFile)
+            val osw = OutputStreamWriter(fos, StandardCharsets.UTF_8)
+            val bw = BufferedWriter(osw)
             bw.write(content)
             bw.close()
         } catch (e: IOException) {
@@ -192,6 +194,8 @@ class NewGetX : AnAction() {
         content = replaceState(content, inputFileName)
 
         content = content.replace("@name".toRegex(), name)
+
+        content = content.replace(name + "Page", name)
 
         return content
     }
