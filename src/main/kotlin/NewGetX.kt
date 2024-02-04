@@ -191,11 +191,19 @@ class NewGetX : AnAction() {
         content = replaceBinding(content, inputFileName, prefixName)
 
         //replace state file
-        content = replaceState(content, inputFileName)
+        content = replaceState(content, inputFileName, prefixName)
 
         content = content.replace("@name".toRegex(), name)
 
         content = content.replace(name + "Page", name)
+
+        var routeTemp = name
+        if (routeTemp.endsWith("Page")) {
+            val lastIndex = routeTemp.lastIndexOf("Page")
+            routeTemp = routeTemp.substring(0, lastIndex)
+        }
+        routeTemp = CaseFormat.LOWER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, routeTemp)
+        content = content.replace("@route".toRegex(), routeTemp)
 
         return content
     }
@@ -264,13 +272,23 @@ class NewGetX : AnAction() {
         return tempContent
     }
 
-    private fun replaceState(content: String, inputFileName: String): String {
+    private fun replaceState(content: String, inputFileName: String, prefixName: String): String {
         var tempContent = content
         if (!inputFileName.contains("state.dart")) {
             return tempContent
         }
 
         tempContent = tempContent.replace("State".toRegex(), data.module.stateName)
+
+        var viewNameTemp = data.module.viewName
+        if (viewNameTemp.endsWith("Page")) {
+            val lastIndex = viewNameTemp.lastIndexOf("Page")
+            viewNameTemp = viewNameTemp.substring(0, lastIndex)
+        }
+        tempContent = tempContent.replace(
+            "view.dart".toRegex(),
+            "$prefixName${viewNameTemp.lowercase(Locale.getDefault())}view.dart"
+        )
 
         return tempContent
     }
