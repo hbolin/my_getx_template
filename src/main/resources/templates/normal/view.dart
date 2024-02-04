@@ -28,7 +28,10 @@ class @namePage extends BasePageStatefulWidget {
   State<@namePage> createState() => _@namePageState();
 }
 
-class _@namePageState extends _@namePageBaseState<@namePage> {
+class _@namePageState extends BasePageState<@nameLogic, @nameState, @namePage> {
+  @override
+  @nameLogic initGetxController() => @nameLogic();
+
   @override
   Widget buildScaffold(BuildContext context, @nameLogic logic, bool isCachedData) {
     return Scaffold(
@@ -40,43 +43,4 @@ class _@namePageState extends _@namePageBaseState<@namePage> {
       ),
     );
   }
-}
-
-// ------------------------------------------------------ 基于Getx基础页面框架 ------------------------------------------------------
-
-abstract class _@namePageBaseState<T extends @namePage> extends BasePageState<@namePage> {
-  late final @nameLogic logic;
-  late final @nameState state;
-  late final String? getTag;
-
-  @override
-  @mustCallSuper
-  void initState() {
-    getTag = widget.getTag;
-    logic = Get.put(@nameLogic(), tag: getTag);
-    state = Get.find<@nameLogic>(tag: getTag).state;
-    state.page = widget;
-    super.initState();
-  }
-
-  @override
-  @mustCallSuper
-  void didUpdateWidget(covariant @namePage oldWidget) {
-    state.page = widget;
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<@nameLogic>(
-      tag: getTag,
-      builder: (logic) {
-        return buildCachedLoadingBody(context, logic, (context, isCachedData) {
-          return buildScaffold(context, logic, isCachedData);
-        });
-      },
-    );
-  }
-
-  Widget buildScaffold(BuildContext context, @nameLogic logic, bool isCachedData);
 }

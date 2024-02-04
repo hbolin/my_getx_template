@@ -15,7 +15,7 @@ group 'com.dy.getx'
 // the corresponding settings in Plugin.xml will be invalid
 // The two settings below are updated frequently, so put them here
 // The version number is modified here
-version '3.0.0'
+version '3.0.3'
 // must!!!
 sourceCompatibility = 1.8
 

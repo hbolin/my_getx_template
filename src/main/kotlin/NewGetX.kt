@@ -210,7 +210,7 @@ class NewGetX : AnAction() {
 
     private fun replaceLogic(content: String, inputFileName: String, prefixName: String): String {
         var tempContent = content
-        if (!inputFileName.contains("logic.dart")) {
+        if (!inputFileName.endsWith("logic.dart")) {
             return tempContent
         }
 
@@ -227,7 +227,7 @@ class NewGetX : AnAction() {
 
     private fun replaceView(content: String, inputFileName: String, prefixName: String): String {
         var tempContent = content
-        if (!inputFileName.contains("view.dart")) {
+        if (!inputFileName.endsWith("view.dart")) {
             return tempContent
         }
 
@@ -238,7 +238,7 @@ class NewGetX : AnAction() {
 
         //remove lint
         if (!data.function.lintNorm || (!data.setting.lint && data.function.lintNorm)) {
-            tempContent = tempContent.replace("\\s*\nimport 'state.dart';".toRegex(), "")
+//            tempContent = tempContent.replace("\\s*\nimport 'state.dart';".toRegex(), "")
             tempContent = tempContent.replace("final @nameLogic".toRegex(), "final")
             tempContent = tempContent.replace("final @nameState".toRegex(), "final")
         }
@@ -274,7 +274,7 @@ class NewGetX : AnAction() {
 
     private fun replaceState(content: String, inputFileName: String, prefixName: String): String {
         var tempContent = content
-        if (!inputFileName.contains("state.dart")) {
+        if (!inputFileName.endsWith("state.dart")) {
             return tempContent
         }
 

@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 
 import 'state.dart';
 
-class @nameLogic extends BasePageGetxController {
-  final @nameState state = @nameState();
+class @nameLogic extends BasePageGetxController<@nameState> {
+  @override
+  @nameState initBasePageBaseState() => @nameState();
 
   @override
   Future<void> loadData(bool isLoadCachedData) async {
