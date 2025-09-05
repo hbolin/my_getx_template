@@ -40,7 +40,10 @@ class _@namePageState extends BasePageState<@nameLogic, @nameState, @namePage> {
   @override
   Widget buildView(BuildContext context, Widget appBarBackButton, Widget? appBarTitle, @nameLogic logic, bool isCachedData) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: appBarBackButton,
+        title: appBarTitle,
+      ),
       body: Column(
         children: [
           // TODO：

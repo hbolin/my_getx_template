@@ -252,7 +252,7 @@ open class GetXTemplateView(private val getXListener: GetXListener) {
             }
         }
 
-        function.isVisible = false
+//        function.isVisible = false
     }
 
     /**

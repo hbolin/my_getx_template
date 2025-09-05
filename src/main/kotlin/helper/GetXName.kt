@@ -2,8 +2,8 @@ package helper
 
 object GetXName {
     // mode
-    const val ModeDefault = "Default"
-    const val ModeEasy = "Easy"
+    const val ModeDefault = "Page"
+    const val ModeEasy = "NotPage(TabContent)"
 
     //main function
     const val mainUseFolder = "useFolder"
