@@ -115,7 +115,7 @@ class NewGetX : AnAction() {
         if (data.modeDefault) {
             generateDefault(path, prefixName)
         } else if (data.modeEasy) {
-            generateEasy(path, prefixName)
+            generateDefault2(path, prefixName)
         }
 
         //add binding file
@@ -128,6 +128,12 @@ class NewGetX : AnAction() {
         generateFile("state.dart", path, "$prefixName${data.module.stateName.lowercase(Locale.getDefault())}.dart")
         generateFile("logic.dart", path, "$prefixName${data.module.logicName.lowercase(Locale.getDefault())}.dart")
         generateFile("view.dart", path, "$prefixName${data.module.viewFileName.lowercase(Locale.getDefault())}.dart")
+    }
+
+    private fun generateDefault2(path: String, prefixName: String) {
+        generateFile("state.dart", path, "$prefixName${data.module.stateName.lowercase(Locale.getDefault())}.dart")
+        generateFile("logic.dart", path, "$prefixName${data.module.logicName.lowercase(Locale.getDefault())}.dart")
+        generateFile("content_view.dart", path, "$prefixName${data.module.viewFileName.lowercase(Locale.getDefault())}.dart")
     }
 
     private fun generateEasy(path: String, prefixName: String) {

@@ -120,7 +120,7 @@ open class GetXTemplateView(private val getXListener: GetXListener) {
         container.add(template)
         setSpacing(container)
 
-        template.isVisible = false
+//        template.isVisible = false
     }
 
     /**
@@ -252,7 +252,7 @@ open class GetXTemplateView(private val getXListener: GetXListener) {
             }
         }
 
-//        function.isVisible = false
+        function.isVisible = false
     }
 
     /**

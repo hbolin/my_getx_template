@@ -33,14 +33,17 @@ class _@namePageState extends BasePageState<@nameLogic, @nameState, @namePage> {
 
   @override
   Widget? buildAppBarTitle(BuildContext context) {
-    // TODO：配置AppBar的Title
-    return null;
+    // TODO：设置AppBar Title
+    return const Text("");
   }
 
   @override
-  Widget buildView(BuildContext context, Widget appBarBackButton, Widget? appBarTitle, @nameLogic logic, bool isCachedData) {
+  Widget buildScaffold(BuildContext context, Widget appBarBackButton, Widget? appBarTitle, @nameLogic logic, bool isCachedData) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: appBarBackButton,
+        title: appBarTitle,
+      ),
       body: Column(
         children: [
           // TODO：
